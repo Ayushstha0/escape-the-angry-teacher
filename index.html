@@ -295,15 +295,36 @@ function update(dt) {
 }
 
 function drawCharacter(x, y, color, label) {
+  // Character body
   ctx.fillStyle = color;
   ctx.beginPath();
-  ctx.arc(x, y, 13, 0, Math.PI * 2);
+  ctx.arc(x, y, 15, 0, Math.PI * 2);
   ctx.fill();
 
-  ctx.fillStyle = "white";
-  ctx.font = "bold 12px Arial";
+  // White border makes the character easy to see
+  ctx.lineWidth = 3;
+  ctx.strokeStyle = "white";
+  ctx.stroke();
+
+  // Character label
+  ctx.fillStyle = "#111827";
+  ctx.font = "bold 14px Arial";
   ctx.textAlign = "center";
-  ctx.fillText(label, x, y - 20);
+  ctx.fillText(label, x, y - 23);
+
+  // Teacher's angry face
+  if (label === "TEACHER") {
+    ctx.fillStyle = "white";
+    ctx.font = "bold 17px Arial";
+    ctx.fillText("😡", x, y + 6);
+  }
+
+  // Student's face
+  if (label === "YOU") {
+    ctx.fillStyle = "white";
+    ctx.font = "bold 17px Arial";
+    ctx.fillText("🙂", x, y + 6);
+  }
 }
 
 function draw() {
